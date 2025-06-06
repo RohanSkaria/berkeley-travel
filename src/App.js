@@ -1,5 +1,5 @@
 import React from 'react';
-import { Phone, Mail, MapPin, Clock, Award, Users, Plane, Ship, Building, Star, Search, Menu } from 'lucide-react';
+import { Phone, MapPin, Clock, Award, Users, Plane, Ship, Building, Star, Search, Menu } from 'lucide-react';
 
 const BerkeleyNorthsideTravel = () => {
   const services = [
@@ -375,16 +375,19 @@ const BerkeleyNorthsideTravel = () => {
                   marginBottom: '16px',
                   margin: '0 0 16px 0'
                 }}>{service.description}</p>
-                <a href="#" style={{
+                <button style={{
                   fontSize: '14px',
                   fontWeight: '300',
                   color: '#111827',
                   borderBottom: '1px solid #d1d5db',
+                  backgroundColor: 'transparent',
+                  border: 'none',
+                  cursor: 'pointer',
                   textDecoration: 'none',
                   transition: 'border-color 0.3s ease'
                 }}>
                   find out more
-                </a>
+                </button>
               </div>
             ))}
           </div>
@@ -436,16 +439,19 @@ const BerkeleyNorthsideTravel = () => {
                 is conveniently located on Euclid Avenue, just steps from the north gate of the University 
                 of California at Berkeley.
               </p>
-              <a href="#about" style={{
+              <button style={{
                 fontSize: '14px',
                 fontWeight: '300',
                 color: '#111827',
                 borderBottom: '1px solid #d1d5db',
+                backgroundColor: 'transparent',
+                border: 'none',
+                cursor: 'pointer',
                 textDecoration: 'none',
                 transition: 'border-color 0.3s ease'
               }}>
                 find out more
-              </a>
+              </button>
             </div>
           </div>
           
@@ -487,16 +493,19 @@ const BerkeleyNorthsideTravel = () => {
                 our clients like family. Personal service, genuine care and attention to detail are at the heart 
                 of everything we do.
               </p>
-              <a href="#about" style={{
+              <button style={{
                 fontSize: '14px',
                 fontWeight: '300',
                 color: '#111827',
                 borderBottom: '1px solid #d1d5db',
+                backgroundColor: 'transparent',
+                border: 'none',
+                cursor: 'pointer',
                 textDecoration: 'none',
                 transition: 'border-color 0.3s ease'
               }}>
                 find out more
-              </a>
+              </button>
             </div>
           </div>
         </div>
