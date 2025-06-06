@@ -29,9 +29,13 @@ const BerkeleyNorthsideTravel = () => {
     }
   ];
 
+  // Check if screen is mobile
+  const isMobile = window.innerWidth <= 768;
+  const isTablet = window.innerWidth <= 1024 && window.innerWidth > 768;
+
   return (
     <div style={{ minHeight: '100vh', backgroundColor: 'white' }}>
-      {/* Header - Matching Nelson Travel's minimal design */}
+      {/* Header - Mobile Responsive */}
       <header style={{
         position: 'absolute',
         top: 0,
@@ -43,18 +47,18 @@ const BerkeleyNorthsideTravel = () => {
         <div style={{
           maxWidth: '1280px',
           margin: '0 auto',
-          padding: '0 24px'
+          padding: isMobile ? '0 16px' : '0 24px'
         }}>
           <div style={{
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
-            padding: '24px 0'
+            padding: isMobile ? '16px 0' : '24px 0'
           }}>
             {/* Menu Icon */}
             <div style={{
-              width: '40px',
-              height: '40px',
+              width: isMobile ? '32px' : '40px',
+              height: isMobile ? '32px' : '40px',
               border: '1px solid white',
               borderRadius: '50%',
               display: 'flex',
@@ -62,31 +66,33 @@ const BerkeleyNorthsideTravel = () => {
               justifyContent: 'center',
               cursor: 'pointer'
             }}>
-              <Menu style={{ width: '20px', height: '20px', color: 'white' }} />
+              <Menu style={{ width: isMobile ? '16px' : '20px', height: isMobile ? '16px' : '20px', color: 'white' }} />
             </div>
             
-            {/* Logo - Centered like Nelson Travel */}
+            {/* Logo - Centered, Mobile Responsive */}
             <div style={{
               position: 'absolute',
               left: '50%',
-              transform: 'translateX(-50%)'
+              transform: 'translateX(-50%)',
+              textAlign: 'center'
             }}>
               <h1 style={{
                 color: 'white',
-                fontSize: '24px',
+                fontSize: isMobile ? '14px' : isTablet ? '18px' : '24px',
                 fontWeight: '300',
                 letterSpacing: '0.1em',
-                margin: 0
+                margin: 0,
+                whiteSpace: isMobile ? 'nowrap' : 'normal'
               }}>
-                →Berkeley's Northside Travel←
+                {isMobile ? '→Berkeley Travel←' : '→Berkeley\'s Northside Travel←'}
               </h1>
             </div>
             
             {/* Search and Enquire */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: isMobile ? '8px' : '16px' }}>
               <div style={{
-                width: '40px',
-                height: '40px',
+                width: isMobile ? '32px' : '40px',
+                height: isMobile ? '32px' : '40px',
                 border: '1px solid white',
                 borderRadius: '50%',
                 display: 'flex',
@@ -94,74 +100,77 @@ const BerkeleyNorthsideTravel = () => {
                 justifyContent: 'center',
                 cursor: 'pointer'
               }}>
-                <Search style={{ width: '20px', height: '20px', color: 'white' }} />
+                <Search style={{ width: isMobile ? '16px' : '20px', height: isMobile ? '16px' : '20px', color: 'white' }} />
               </div>
-              <div style={{
-                border: '1px solid white',
-                borderRadius: '9999px',
-                padding: '8px 24px',
-                cursor: 'pointer'
-              }}>
-                <span style={{
-                  color: 'white',
-                  fontSize: '14px',
-                  fontWeight: '300',
-                  letterSpacing: '0.1em'
-                }}>ENQUIRE</span>
-              </div>
+              {!isMobile && (
+                <div style={{
+                  border: '1px solid white',
+                  borderRadius: '9999px',
+                  padding: '8px 24px',
+                  cursor: 'pointer'
+                }}>
+                  <span style={{
+                    color: 'white',
+                    fontSize: '14px',
+                    fontWeight: '300',
+                    letterSpacing: '0.1em'
+                  }}>ENQUIRE</span>
+                </div>
+              )}
             </div>
           </div>
         </div>
         
-        {/* Navigation Bar - Dark like Nelson Travel */}
+        {/* Navigation Bar - Mobile Responsive */}
         <div style={{
           backgroundColor: 'rgba(17, 24, 39, 0.9)'
         }}>
           <div style={{
             maxWidth: '1280px',
             margin: '0 auto',
-            padding: '0 24px'
+            padding: isMobile ? '0 16px' : '0 24px'
           }}>
             <nav style={{
               display: 'flex',
               justifyContent: 'center',
-              gap: '48px',
-              padding: '16px 0'
+              gap: isMobile ? '16px' : isTablet ? '24px' : '48px',
+              padding: isMobile ? '12px 0' : '16px 0',
+              flexWrap: isMobile ? 'wrap' : 'nowrap'
             }}>
               <a href="#services" style={{
                 color: 'white',
-                fontSize: '14px',
+                fontSize: isMobile ? '12px' : '14px',
                 fontWeight: '300',
                 letterSpacing: '0.1em',
                 textDecoration: 'none'
               }}>SERVICES</a>
               <a href="#about" style={{
                 color: 'white',
-                fontSize: '14px',
+                fontSize: isMobile ? '12px' : '14px',
                 fontWeight: '300',
                 letterSpacing: '0.1em',
                 textDecoration: 'none'
-              }}>ABOUT US</a>
+              }}>ABOUT</a>
               <a href="#contact" style={{
                 color: 'white',
-                fontSize: '14px',
+                fontSize: isMobile ? '12px' : '14px',
                 fontWeight: '300',
                 letterSpacing: '0.1em',
                 textDecoration: 'none'
               }}>CONTACT</a>
               <a href="tel:510-843-1000" style={{
                 color: 'white',
-                fontSize: '14px',
+                fontSize: isMobile ? '12px' : '14px',
                 fontWeight: '300',
                 letterSpacing: '0.1em',
                 textDecoration: 'none'
-              }}>CALL NOW</a>
+              }}>CALL</a>
             </nav>
           </div>
         </div>
       </header>
 
-      {/* Hero Section - Full screen like Nelson Travel */}
+      {/* Hero Section - Mobile Responsive */}
       <section style={{
         position: 'relative',
         height: '100vh',
@@ -198,42 +207,43 @@ const BerkeleyNorthsideTravel = () => {
           }}></div>
         </div>
         
-        {/* Hero Content */}
+        {/* Hero Content - Mobile Responsive */}
         <div style={{
           position: 'relative',
           textAlign: 'center',
-          maxWidth: '896px',
+          maxWidth: isMobile ? '320px' : isTablet ? '600px' : '896px',
           margin: '0 auto',
-          padding: '0 24px'
+          padding: isMobile ? '0 20px' : '0 24px'
         }}>
           <h2 style={{
-            fontSize: '96px',
+            fontSize: isMobile ? '36px' : isTablet ? '60px' : '96px',
             fontWeight: '300',
-            marginBottom: '24px',
-            lineHeight: '1.2',
-            margin: '0 0 24px 0'
+            marginBottom: isMobile ? '16px' : '24px',
+            lineHeight: isMobile ? '1.1' : '1.2',
+            margin: isMobile ? '0 0 16px 0' : '0 0 24px 0'
           }}>
             Timeless Travel. Unlocked.
           </h2>
           <p style={{
-            fontSize: '24px',
+            fontSize: isMobile ? '16px' : isTablet ? '20px' : '24px',
             fontWeight: '300',
-            marginBottom: '48px',
+            marginBottom: isMobile ? '32px' : '48px',
             color: '#e5e7eb',
-            margin: '0 0 48px 0'
+            margin: isMobile ? '0 0 32px 0' : '0 0 48px 0',
+            lineHeight: '1.4'
           }}>
             When Travel Means Business Or Pleasure — We're Here For You!
           </p>
           
-          {/* CTA Button - Matching Nelson Travel style */}
+          {/* CTA Button - Mobile Responsive */}
           <div style={{
             border: '1px solid white',
             display: 'inline-block'
           }}>
             <button style={{
-              padding: '16px 48px',
+              padding: isMobile ? '12px 24px' : '16px 48px',
               color: 'white',
-              fontSize: '14px',
+              fontSize: isMobile ? '12px' : '14px',
               fontWeight: '300',
               letterSpacing: '0.1em',
               backgroundColor: 'transparent',
@@ -246,48 +256,52 @@ const BerkeleyNorthsideTravel = () => {
           </div>
         </div>
         
-        {/* Trust Badges at bottom - Like Nelson Travel */}
+        {/* Trust Badges - Mobile Responsive */}
         <div style={{
           position: 'absolute',
-          bottom: '32px',
+          bottom: isMobile ? '16px' : '32px',
           left: '50%',
-          transform: 'translateX(-50%)'
+          transform: 'translateX(-50%)',
+          width: '100%',
+          padding: isMobile ? '0 20px' : '0'
         }}>
           <div style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '32px',
+            justifyContent: 'center',
+            gap: isMobile ? '16px' : '32px',
             color: 'white',
-            opacity: '0.8'
+            opacity: '0.8',
+            flexWrap: isMobile ? 'wrap' : 'nowrap'
           }}>
             <div style={{ display: 'flex', alignItems: 'center' }}>
-              <Award style={{ width: '16px', height: '16px', marginRight: '8px' }} />
-              <span style={{ fontSize: '12px', fontWeight: '300' }}>CA SELLER #1010530-10</span>
+              <Award style={{ width: isMobile ? '12px' : '16px', height: isMobile ? '12px' : '16px', marginRight: '8px' }} />
+              <span style={{ fontSize: isMobile ? '10px' : '12px', fontWeight: '300' }}>CA SELLER #1010530-10</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center' }}>
-              <Star style={{ width: '16px', height: '16px', marginRight: '8px' }} />
-              <span style={{ fontSize: '12px', fontWeight: '300' }}>40+ YEARS EXPERIENCE</span>
+              <Star style={{ width: isMobile ? '12px' : '16px', height: isMobile ? '12px' : '16px', marginRight: '8px' }} />
+              <span style={{ fontSize: isMobile ? '10px' : '12px', fontWeight: '300' }}>40+ YEARS EXPERIENCE</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* About Section - Matching Nelson Travel layout */}
-      <section style={{ padding: '96px 0', backgroundColor: 'white' }}>
+      {/* About Section - Mobile Responsive */}
+      <section style={{ padding: isMobile ? '48px 0' : isTablet ? '72px 0' : '96px 0', backgroundColor: 'white' }}>
         <div style={{
           maxWidth: '1152px',
           margin: '0 auto',
-          padding: '0 24px'
+          padding: isMobile ? '0 20px' : '0 24px'
         }}>
           <div style={{
             textAlign: 'center',
-            marginBottom: '64px'
+            marginBottom: isMobile ? '32px' : '64px'
           }}>
             <p style={{
-              fontSize: '18px',
+              fontSize: isMobile ? '16px' : '18px',
               color: '#4b5563',
               fontWeight: '300',
-              maxWidth: '896px',
+              maxWidth: isMobile ? '100%' : '896px',
               margin: '0 auto',
               lineHeight: '1.625'
             }}>
@@ -299,29 +313,29 @@ const BerkeleyNorthsideTravel = () => {
         </div>
       </section>
 
-      {/* Services Section - Card layout like Nelson Travel */}
-      <section id="services" style={{ padding: '96px 0', backgroundColor: '#f9fafb' }}>
+      {/* Services Section - Mobile Responsive */}
+      <section id="services" style={{ padding: isMobile ? '48px 0' : isTablet ? '72px 0' : '96px 0', backgroundColor: '#f9fafb' }}>
         <div style={{
           maxWidth: '1280px',
           margin: '0 auto',
-          padding: '0 24px'
+          padding: isMobile ? '0 20px' : '0 24px'
         }}>
           <div style={{
             textAlign: 'center',
-            marginBottom: '64px'
+            marginBottom: isMobile ? '32px' : '64px'
           }}>
             <h3 style={{
-              fontSize: '48px',
+              fontSize: isMobile ? '32px' : isTablet ? '40px' : '48px',
               fontWeight: '300',
               color: '#111827',
-              marginBottom: '24px',
-              margin: '0 0 24px 0'
+              marginBottom: isMobile ? '16px' : '24px',
+              margin: isMobile ? '0 0 16px 0' : '0 0 24px 0'
             }}>Our Service</h3>
             <p style={{
-              fontSize: '20px',
+              fontSize: isMobile ? '16px' : '20px',
               fontWeight: '300',
               color: '#4b5563',
-              maxWidth: '768px',
+              maxWidth: isMobile ? '100%' : '768px',
               margin: '0 auto'
             }}>
               Tailor-made itineraries, crafted by our experts
@@ -330,8 +344,8 @@ const BerkeleyNorthsideTravel = () => {
           
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: '48px'
+            gridTemplateColumns: isMobile ? '1fr' : isTablet ? 'repeat(2, 1fr)' : 'repeat(auto-fit, minmax(300px, 1fr))',
+            gap: isMobile ? '24px' : '48px'
           }}>
             {services.map((service, index) => (
               <div key={index} style={{ cursor: 'pointer' }}>
@@ -339,14 +353,14 @@ const BerkeleyNorthsideTravel = () => {
                   position: 'relative',
                   overflow: 'hidden',
                   borderRadius: '8px',
-                  marginBottom: '24px'
+                  marginBottom: isMobile ? '16px' : '24px'
                 }}>
                   <img 
                     src={service.image}
                     alt={service.title}
                     style={{
                       width: '100%',
-                      height: '320px',
+                      height: isMobile ? '200px' : '320px',
                       objectFit: 'cover',
                       transition: 'transform 0.5s ease'
                     }}
@@ -362,21 +376,22 @@ const BerkeleyNorthsideTravel = () => {
                   }}></div>
                 </div>
                 <h4 style={{
-                  fontSize: '24px',
+                  fontSize: isMobile ? '20px' : '24px',
                   fontWeight: '300',
                   color: '#111827',
-                  marginBottom: '12px',
-                  margin: '0 0 12px 0'
+                  marginBottom: isMobile ? '8px' : '12px',
+                  margin: isMobile ? '0 0 8px 0' : '0 0 12px 0'
                 }}>{service.title}</h4>
                 <p style={{
                   color: '#4b5563',
                   fontWeight: '300',
                   lineHeight: '1.625',
-                  marginBottom: '16px',
-                  margin: '0 0 16px 0'
+                  marginBottom: isMobile ? '12px' : '16px',
+                  margin: isMobile ? '0 0 12px 0' : '0 0 16px 0',
+                  fontSize: isMobile ? '14px' : '16px'
                 }}>{service.description}</p>
                 <button style={{
-                  fontSize: '14px',
+                  fontSize: isMobile ? '12px' : '14px',
                   fontWeight: '300',
                   color: '#111827',
                   borderBottom: '1px solid #d1d5db',
@@ -394,53 +409,55 @@ const BerkeleyNorthsideTravel = () => {
         </div>
       </section>
 
-      {/* Features Section - Alternating layout */}
-      <section style={{ padding: '96px 0', backgroundColor: 'white' }}>
+      {/* Features Section - Mobile Responsive */}
+      <section style={{ padding: isMobile ? '48px 0' : isTablet ? '72px 0' : '96px 0', backgroundColor: 'white' }}>
         <div style={{
           maxWidth: '1280px',
           margin: '0 auto',
-          padding: '0 24px'
+          padding: isMobile ? '0 20px' : '0 24px'
         }}>
+          {/* First Feature */}
           <div style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: '64px',
+            display: isMobile ? 'block' : 'grid',
+            gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
+            gap: isMobile ? '24px' : '64px',
             alignItems: 'center',
-            marginBottom: '80px'
+            marginBottom: isMobile ? '48px' : '80px'
           }}>
-            <div>
+            <div style={{ order: isMobile ? 2 : 1 }}>
               <img 
                 src="https://images.unsplash.com/photo-1600298881974-6be191ceeda1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                 alt="Berkeley Office"
                 style={{
                   width: '100%',
-                  height: '384px',
+                  height: isMobile ? '200px' : '384px',
                   objectFit: 'cover',
                   borderRadius: '8px'
                 }}
               />
             </div>
-            <div>
+            <div style={{ order: isMobile ? 1 : 2 }}>
               <h3 style={{
-                fontSize: '32px',
+                fontSize: isMobile ? '24px' : '32px',
                 fontWeight: '300',
                 color: '#111827',
-                marginBottom: '24px',
-                margin: '0 0 24px 0'
+                marginBottom: isMobile ? '16px' : '24px',
+                margin: isMobile ? '0 0 16px 0' : '0 0 24px 0'
               }}>Established Since 1980</h3>
               <p style={{
                 color: '#4b5563',
                 fontWeight: '300',
                 lineHeight: '1.625',
-                marginBottom: '24px',
-                margin: '0 0 24px 0'
+                marginBottom: isMobile ? '16px' : '24px',
+                margin: isMobile ? '0 0 16px 0' : '0 0 24px 0',
+                fontSize: isMobile ? '14px' : '16px'
               }}>
                 Over 40 years of experience serving the Berkeley community and beyond. Our travel agency 
                 is conveniently located on Euclid Avenue, just steps from the north gate of the University 
                 of California at Berkeley.
               </p>
               <button style={{
-                fontSize: '14px',
+                fontSize: isMobile ? '12px' : '14px',
                 fontWeight: '300',
                 color: '#111827',
                 borderBottom: '1px solid #d1d5db',
@@ -455,46 +472,48 @@ const BerkeleyNorthsideTravel = () => {
             </div>
           </div>
           
+          {/* Second Feature */}
           <div style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: '64px',
+            display: isMobile ? 'block' : 'grid',
+            gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
+            gap: isMobile ? '24px' : '64px',
             alignItems: 'center',
-            marginBottom: '80px'
+            marginBottom: isMobile ? '48px' : '80px'
           }}>
-            <div style={{ order: 2 }}>
+            <div style={{ order: isMobile ? 2 : 2 }}>
               <img 
                 src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                 alt="Personal Service"
                 style={{
                   width: '100%',
-                  height: '384px',
+                  height: isMobile ? '200px' : '384px',
                   objectFit: 'cover',
                   borderRadius: '8px'
                 }}
               />
             </div>
-            <div style={{ order: 1 }}>
+            <div style={{ order: isMobile ? 1 : 1 }}>
               <h3 style={{
-                fontSize: '32px',
+                fontSize: isMobile ? '24px' : '32px',
                 fontWeight: '300',
                 color: '#111827',
-                marginBottom: '24px',
-                margin: '0 0 24px 0'
+                marginBottom: isMobile ? '16px' : '24px',
+                margin: isMobile ? '0 0 16px 0' : '0 0 24px 0'
               }}>Personal Service</h3>
               <p style={{
                 color: '#4b5563',
                 fontWeight: '300',
                 lineHeight: '1.625',
-                marginBottom: '24px',
-                margin: '0 0 24px 0'
+                marginBottom: isMobile ? '16px' : '24px',
+                margin: isMobile ? '0 0 16px 0' : '0 0 24px 0',
+                fontSize: isMobile ? '14px' : '16px'
               }}>
                 We are privately owned by people who care. Our business is built on relationships and we treat 
                 our clients like family. Personal service, genuine care and attention to detail are at the heart 
                 of everything we do.
               </p>
               <button style={{
-                fontSize: '14px',
+                fontSize: isMobile ? '12px' : '14px',
                 fontWeight: '300',
                 color: '#111827',
                 borderBottom: '1px solid #d1d5db',
@@ -511,21 +530,21 @@ const BerkeleyNorthsideTravel = () => {
         </div>
       </section>
 
-      {/* Contact Section - Elegant like Nelson Travel */}
-      <section id="contact" style={{ padding: '96px 0', backgroundColor: '#111827', color: 'white' }}>
+      {/* Contact Section - Mobile Responsive */}
+      <section id="contact" style={{ padding: isMobile ? '48px 0' : isTablet ? '72px 0' : '96px 0', backgroundColor: '#111827', color: 'white' }}>
         <div style={{
           maxWidth: '1152px',
           margin: '0 auto',
-          padding: '0 24px',
+          padding: isMobile ? '0 20px' : '0 24px',
           textAlign: 'center'
         }}>
           <p style={{
-            fontSize: '24px',
+            fontSize: isMobile ? '18px' : isTablet ? '20px' : '24px',
             fontWeight: '300',
-            marginBottom: '64px',
+            marginBottom: isMobile ? '32px' : '64px',
             color: '#d1d5db',
-            maxWidth: '896px',
-            margin: '0 auto 64px auto',
+            maxWidth: isMobile ? '100%' : '896px',
+            margin: isMobile ? '0 auto 32px auto' : '0 auto 64px auto',
             lineHeight: '1.625'
           }}>
             We believe that a truly unforgettable trip is one that will be talked about for years to come. 
@@ -534,14 +553,14 @@ const BerkeleyNorthsideTravel = () => {
           
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '48px',
-            marginBottom: '64px'
+            gridTemplateColumns: isMobile ? '1fr' : isTablet ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)',
+            gap: isMobile ? '24px' : '48px',
+            marginBottom: isMobile ? '32px' : '64px'
           }}>
             <div style={{ textAlign: 'center' }}>
-              <MapPin style={{ width: '32px', height: '32px', color: '#fbbf24', margin: '0 auto 16px auto' }} />
+              <MapPin style={{ width: isMobile ? '24px' : '32px', height: isMobile ? '24px' : '32px', color: '#fbbf24', margin: '0 auto 16px auto' }} />
               <h4 style={{
-                fontSize: '18px',
+                fontSize: isMobile ? '16px' : '18px',
                 fontWeight: '300',
                 marginBottom: '8px',
                 margin: '0 0 8px 0'
@@ -549,7 +568,8 @@ const BerkeleyNorthsideTravel = () => {
               <p style={{
                 color: '#9ca3af',
                 fontWeight: '300',
-                margin: 0
+                margin: 0,
+                fontSize: isMobile ? '14px' : '16px'
               }}>
                 1824 Euclid Avenue<br />
                 Berkeley, California<br />
@@ -558,9 +578,9 @@ const BerkeleyNorthsideTravel = () => {
             </div>
             
             <div style={{ textAlign: 'center' }}>
-              <Phone style={{ width: '32px', height: '32px', color: '#fbbf24', margin: '0 auto 16px auto' }} />
+              <Phone style={{ width: isMobile ? '24px' : '32px', height: isMobile ? '24px' : '32px', color: '#fbbf24', margin: '0 auto 16px auto' }} />
               <h4 style={{
-                fontSize: '18px',
+                fontSize: isMobile ? '16px' : '18px',
                 fontWeight: '300',
                 marginBottom: '8px',
                 margin: '0 0 8px 0'
@@ -568,17 +588,18 @@ const BerkeleyNorthsideTravel = () => {
               <p style={{
                 color: '#9ca3af',
                 fontWeight: '300',
-                margin: 0
+                margin: 0,
+                fontSize: isMobile ? '14px' : '16px'
               }}>
                 <a href="tel:510-843-1000" style={{ color: '#9ca3af', textDecoration: 'none' }}>510-843-1000</a><br />
                 Fax: 510-843-7537
               </p>
             </div>
             
-            <div style={{ textAlign: 'center' }}>
-              <Clock style={{ width: '32px', height: '32px', color: '#fbbf24', margin: '0 auto 16px auto' }} />
+            <div style={{ textAlign: 'center', gridColumn: isMobile ? '1' : isTablet ? '1 / 3' : 'auto' }}>
+              <Clock style={{ width: isMobile ? '24px' : '32px', height: isMobile ? '24px' : '32px', color: '#fbbf24', margin: '0 auto 16px auto' }} />
               <h4 style={{
-                fontSize: '18px',
+                fontSize: isMobile ? '16px' : '18px',
                 fontWeight: '300',
                 marginBottom: '8px',
                 margin: '0 0 8px 0'
@@ -586,7 +607,8 @@ const BerkeleyNorthsideTravel = () => {
               <p style={{
                 color: '#9ca3af',
                 fontWeight: '300',
-                margin: 0
+                margin: 0,
+                fontSize: isMobile ? '14px' : '16px'
               }}>
                 Mon-Fri: 9:00 AM - 5:30 PM<br />
                 Saturday: 1:00 PM - 5:00 PM
@@ -601,9 +623,9 @@ const BerkeleyNorthsideTravel = () => {
             <button 
               onClick={() => window.location.href = 'mailto:bestbuys@berkeley4travel.com'}
               style={{
-                padding: '16px 48px',
+                padding: isMobile ? '12px 24px' : '16px 48px',
                 color: 'white',
-                fontSize: '14px',
+                fontSize: isMobile ? '12px' : '14px',
                 fontWeight: '300',
                 letterSpacing: '0.1em',
                 backgroundColor: 'transparent',
@@ -612,38 +634,41 @@ const BerkeleyNorthsideTravel = () => {
                 transition: 'all 0.3s ease'
               }}
             >
-              START PLANNING YOUR JOURNEY
+              {isMobile ? 'START PLANNING' : 'START PLANNING YOUR JOURNEY'}
             </button>
           </div>
         </div>
       </section>
 
-      {/* Footer - Minimal like Nelson Travel */}
-      <footer style={{ backgroundColor: 'black', color: 'white', padding: '32px 0' }}>
+      {/* Footer - Mobile Responsive */}
+      <footer style={{ backgroundColor: 'black', color: 'white', padding: isMobile ? '24px 0' : '32px 0' }}>
         <div style={{
           maxWidth: '1280px',
           margin: '0 auto',
-          padding: '0 24px'
+          padding: isMobile ? '0 20px' : '0 24px'
         }}>
           <div style={{ textAlign: 'center' }}>
             <p style={{
-              fontSize: '14px',
+              fontSize: isMobile ? '12px' : '14px',
               fontWeight: '300',
               color: '#9ca3af',
-              marginBottom: '16px',
-              margin: '0 0 16px 0'
+              marginBottom: isMobile ? '12px' : '16px',
+              margin: isMobile ? '0 0 12px 0' : '0 0 16px 0'
             }}>
               California Seller of Travel Certificate No. 1010530-10
             </p>
             <div style={{
               display: 'flex',
               justifyContent: 'center',
-              gap: '32px',
-              fontSize: '14px',
-              fontWeight: '300'
+              gap: isMobile ? '16px' : '32px',
+              fontSize: isMobile ? '12px' : '14px',
+              fontWeight: '300',
+              flexWrap: 'wrap'
             }}>
               <a href="tel:510-843-1000" style={{ color: 'white', textDecoration: 'none' }}>510-843-1000</a>
-              <a href="mailto:bestbuys@berkeley4travel.com" style={{ color: 'white', textDecoration: 'none' }}>bestbuys@berkeley4travel.com</a>
+              <a href="mailto:bestbuys@berkeley4travel.com" style={{ color: 'white', textDecoration: 'none', wordBreak: 'break-all' }}>
+                {isMobile ? 'Email Us' : 'bestbuys@berkeley4travel.com'}
+              </a>
             </div>
           </div>
         </div>
